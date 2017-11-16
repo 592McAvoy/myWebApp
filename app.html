@@ -1,33 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>my app</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <h1>my web App</h1>
-	<div>
-		<input type="text" placeholder="商品名称"></input>
-		<input type="number" placeholder="单价"></input>
-		<input type="number" placeholder="数量"></input>
-	  <button>添加</button>
-	</div>
-  <div>
-		<div>
-			<ol>
-				<li></li>
-			</ol>
-		</div>
+<html ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="script.js"></script>
+    <title>My first web application</title>
+  </head>
+  <body>
+    <h1>Web App</h1>
+    <div ng-controller='ShoppingListAddController as itemAdder'>
+      <input type="text" ng-model="itemAdder.itemName" placeholder="item name">
+      <input type="number" ng-model="itemAdder.itemPrice" placeholder="price">
+			<input type="number" ng-model="itemAdder.itemQuantity" placeholder="quantity">
+      <button ng-click="itemAdder.addItem();">Add Item To Shopping List</button>
+    </div>
 
-	  <div>
-			<p>总价：</p>
-		</div>
-  </div>
-	<script src="js/angular.min.js"></script>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/script.js"></script>
-</body>
+    <div ng-controller='ShoppingListShowController as showList'>
+      <ol>
+        <li ng-repeat="item in showList.items">
+          {{ item.quantity }} of {{ item.name }}
+          <button ng-click="showList.removeItem($index);">Remove Item</button>
+        </li>
+      </ol>
+    </div>
+  </body>
 </html>
