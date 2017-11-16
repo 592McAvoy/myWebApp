@@ -18,10 +18,13 @@
     <div ng-controller='ShoppingListShowController as showList'>
       <ol>
         <li ng-repeat="item in showList.items">
-          {{ item.quantity }} of {{ item.name }}
+          {{ item.quantity }} of {{ item.name }} for ${{item.price}}
           <button ng-click="showList.removeItem($index);">Remove Item</button>
         </li>
       </ol>
+			<div>
+				<span ng-modal="showList.totalCost">Total Cost:{{showList.total}}<span>
+			</div>
     </div>
   </body>
 </html>
