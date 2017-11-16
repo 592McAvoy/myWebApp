@@ -26,7 +26,10 @@ function ShoppingListShowController(ShoppingListService) {
 
   showList.items = ShoppingListService.getItems();
 
-  showList.total = ShoppingListService.total();
+  showList.totalCost = 0;
+  showList.cal = function () {
+    showList.totalCost = ShoppingListService.total();
+  };
 
   showList.removeItem = function (itemIndex) {
     ShoppingListService.removeItem(itemIndex);
@@ -60,8 +63,7 @@ function ShoppingListService() {
   };
 
   service.total = function () {
-    var total = 20;
-    console.log("aaa");
+    var total = 0;
     for(var i = 0;i<items.length;i++){
 
       var item = items[i]
@@ -69,7 +71,6 @@ function ShoppingListService() {
     }
     return total;
   };
-
 }
 
 })();
