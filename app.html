@@ -2,8 +2,10 @@
 <html ng-app='myApp'>
   <head>
     <meta charset="utf-8">
-    <script src="angular.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/angular.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
     <title>My first web application</title>
   </head>
   <body>
@@ -24,7 +26,7 @@
       </ol>
 			<div>
 				<button ng-click="showList.cal();">Calculate Total Cost</button>
-				<span>Total Cost:${{showList.totalCost}}<span>
+				<span >Total Cost:${{showList.totalCost}}<span>
 			</div>
     </div>
   </body>
