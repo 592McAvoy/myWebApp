@@ -9,10 +9,14 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
-    <title>My first web application</title>
+    <title>My first Web App</title>
   </head>
   <body>
-    <h1>Web App</h1>
+    <h1>Shopping List</h1>
+    <p class="text-info">
+      This application helps to generate a shoppinglist.<br>
+      Please enter information about your shopping items in the following input boxes.<br>
+    </p>
     <div ng-controller='ShoppingListAddController as itemAdder'>
       <div class="input-group">
             <span class="input-group-addon glyphicon glyphicon-star-empty"> Name:</span>
@@ -37,12 +41,12 @@
         <li ng-repeat="item in showList.items" class="list-group-item">
           <span class="glyphicon glyphicon-gift"></span>
           {{ item.name }}  ------  Quantity:{{ item.quantity }}  ------  Price:${{item.price}}
-          <button ng-click="showList.removeItem($index);">Remove Item</button>
+          <button ng-click="showList.removeItem($index);" class="btn btn-warning btn-xs">Remove Item</button>
         </li>
       </ol>
 			<div>
-				<button ng-click="showList.cal();">Calculate Total Cost</button>
-				<span >Total Cost:${{showList.totalCost}}<span>
+				<button ng-click="showList.cal();" class="btn btn-info">Calculate Total Cost</button>
+				<p ng-if="showList.totalCost" class="text-info">Total Cost:${{showList.totalCost}}</p>
 			</div>
     </div>
   </body>
