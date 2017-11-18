@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <script src="js/main.min.js"></script>
+    
+    <title>My first Web App</title>
+  </head>
+  <body>
+    <h1>Shopping List</h1>
+    <p class="text-info">
+      This application helps to generate a shoppinglist.<br>
+      Please enter information about your shopping items in the following input boxes.<br>
+    </p>
+    <div ng-controller='ShoppingListAddController as itemAdder'>
+      <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-star-empty"> Name:</span>
+            <input type="text" ng-model="itemAdder.itemName"  placeholder="item name">
+      </div>
+      <div class="input-group">
+            <span class="input-group-addon  glyphicon glyphicon-usd"> Price:</span>
+            <input type="number" ng-model="itemAdder.itemPrice" placeholder="price">
+      </div>
+      <div class="input-group">
+            <span class="input-group-addon 	glyphicon glyphicon-bookmark"> Quantity:</span>
+            <input type="number" ng-model="itemAdder.itemQuantity" placeholder="quantity">
+      </div>
+      <br>
+      <button ng-click="itemAdder.addItem();" class="btn btn-primary">Add Item To Shopping List</button>
+      <br>
+
+    </div>
+
+    <div ng-controller='ShoppingListShowController as showList'>
+      <ol class="list-group">
+        <li ng-repeat="item in showList.items" class="list-group-item">
+          <span class="glyphicon glyphicon-gift"></span>
+          {{ item.name }}  ------  Quantity:{{ item.quantity }}  ------  Price:${{item.price}}
+          <button ng-click="showList.removeItem($index);" class="btn btn-warning btn-xs">Remove Item</button>
+        </li>
+      </ol>
+			<div>
+				<button ng-click="showList.cal();" class="btn btn-info">Calculate Total Cost</button>
+				<p ng-if="showList.totalCost" class="text-info">Total Cost:${{showList.totalCost}}</p>
+			</div>
+    </div>
+  </body>
+</html>
